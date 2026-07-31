@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <style>
+    body { margin: 0; background: #0B1533; }
+    * { box-sizing: border-box; }
+    ::selection { background: #D4AF6A; color: #0B1533; }
+    @keyframes floatY { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-14px); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .gdn-scrollbar::-webkit-scrollbar { height: 0; width: 0; }
+  </style>
+</helmet>
+
+<div style="font-family: 'Manrope', sans-serif; background: #F7F8FB; color: #0F172A; overflow-x: hidden;">
+
+  <nav data-screen-label="Nav" style="position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: {{ navPadding }}; background: {{ navBg }}; backdrop-filter: {{ navBlur }}; box-shadow: {{ navShadow }}; transition: all .4s ease;">
+    <a href="#top" style="display:flex; align-items:center; gap:10px; text-decoration:none;">
+      <img src="assets/logo-negativo.png" alt="O Seu Clube" style="height: 26px; width: auto; opacity: {{ logoOpacity }}; transition: opacity .4s ease;">
+      <img src="assets/logo-cores.png" alt="O Seu Clube" style="height: 26px; width: auto; position:absolute; opacity: {{ logoOpacityInverse }}; transition: opacity .4s ease;">
+    </a>
+    <div style="display: flex; align-items: center; gap: 28px;">
+      <a href="#carta" style="color: {{ navTextColor }}; text-decoration: none; font-size: 14px; font-weight: 600; letter-spacing: .01em; display: none;">Carta</a>
+      <a href="#destaques" style="color: {{ navTextColor }}; text-decoration: none; font-size: 14px; font-weight: 600;">Destaques</a>
+      <a href="#cronograma" style="color: {{ navTextColor }}; text-decoration: none; font-size: 14px; font-weight: 600;">Cronograma</a>
+      <a href="#faq" style="color: {{ navTextColor }}; text-decoration: none; font-size: 14px; font-weight: 600;">FAQ</a>
+      <a href="#downloads" style="background: linear-gradient(135deg, #D4AF6A, #B8923F); color: #12213F; text-decoration: none; font-size: 14px; font-weight: 700; padding: 11px 22px; border-radius: 100px; box-shadow: 0 6px 18px rgba(212,175,106,.35);">Baixar Kit</a>
+    </div>
+  </nav>
+
+  <header id="top" data-screen-label="Hero" style="position: relative; min-height: 880px; padding: 160px 64px 120px; background: radial-gradient(1100px 700px at 85% -10%, rgba(59,130,246,.35), transparent 60%), radial-gradient(900px 600px at -10% 110%, rgba(212,175,106,.18), transparent 60%), linear-gradient(160deg, #0B1533 0%, #142850 55%, #1E3A8A 100%); display: flex; align-items: center; gap: 64px; overflow: hidden;">
+    <div style="position: absolute; top: 18%; left: 6%; width: 420px; height: 420px; border-radius: 50%; background: radial-gradient(circle, rgba(59,130,246,.28), transparent 70%); filter: blur(10px); pointer-events: none;"></div>
+    <div style="flex: 1 1 520px; max-width: 620px; position: relative; z-index: 2;">
+      <div style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 100px; background: rgba(255,255,255,.08); border: 1px solid rgba(212,175,106,.4); backdrop-filter: blur(6px);">
+        <span style="width: 6px; height: 6px; border-radius: 50%; background: #D4AF6A;"></span>
+        <span style="color: #F1DDA6; font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;">Giro de Notícias · Edição Especial</span>
+      </div>
+      <h1 style="font-family: 'Newsreader', serif; font-weight: 500; font-size: clamp(40px, 5vw, 68px); line-height: 1.06; color: #FFFFFF; margin: 28px 0 0; letter-spacing: -0.01em;">Uma edição inteira dedicada ao <em style="color: #F1DDA6; font-style: italic;">Dia dos Pais</em> 2026.</h1>
+      <p style="font-size: 19px; line-height: 1.6; color: rgba(255,255,255,.72); margin: 24px 0 0; max-width: 500px;">Uma campanha completa para fortalecer o relacionamento do seu clube com seus usuários — identidade própria, storytelling, artes e copys, pronta para publicar.</p>
+      <div style="display: flex; align-items: center; gap: 16px; margin-top: 40px; flex-wrap: wrap;">
+        <a href="#downloads" style="background: linear-gradient(135deg, #D4AF6A, #B8923F); color: #12213F; text-decoration: none; font-weight: 700; font-size: 15px; padding: 16px 30px; border-radius: 100px; box-shadow: 0 12px 30px rgba(212,175,106,.3);">Baixar Kit de Artes</a>
+        <a href="#carta" style="color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 15px; padding: 16px 8px; display: inline-flex; align-items: center; gap: 8px;">Explorar esta edição <span style="font-size: 18px;">↓</span></a>
+      </div>
+      <div style="display: flex; gap: 12px; margin-top: 56px; flex-wrap: wrap;">
+        <div style="padding: 12px 18px; border-radius: 14px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); backdrop-filter: blur(8px);">
+          <div style="font-family: 'Newsreader', serif; font-size: 22px; color: #fff; font-weight: 500;">14</div>
+          <div style="font-size: 12px; color: rgba(255,255,255,.6); margin-top: 2px;">marcas parceiras</div>
+        </div>
+        <div style="padding: 12px 18px; border-radius: 14px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); backdrop-filter: blur(8px);">
+          <div style="font-family: 'Newsreader', serif; font-size: 22px; color: #fff; font-weight: 500;">até 40%</div>
+          <div style="font-size: 12px; color: rgba(255,255,255,.6); margin-top: 2px;">de desconto</div>
+        </div>
+        <div style="padding: 12px 18px; border-radius: 14px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); backdrop-filter: blur(8px);">
+          <div style="font-family: 'Newsreader', serif; font-size: 22px; color: #fff; font-weight: 500;">7 dias</div>
+          <div style="font-size: 12px; color: rgba(255,255,255,.6); margin-top: 2px;">de cronograma pronto</div>
+        </div>
+      </div>
+    </div>
+    <div style="flex: 1 1 420px; position: relative; height: 620px; display: flex; align-items: center; justify-content: center; z-index: 2;">
+      <div style="position: absolute; width: 300px; transform: rotate(-9deg) translate(-70px, 20px); border-radius: 22px; overflow: hidden; box-shadow: 0 40px 70px rgba(0,0,0,.45); border: 6px solid rgba(255,255,255,.08); animation: floatY 7s ease-in-out infinite;">
+        <img src="assets/arte/stanley.png" alt="Arte Stanley" style="width: 100%; display: block;">
+      </div>
+      <div style="position: absolute; width: 300px; transform: rotate(6deg) translate(90px, -30px); border-radius: 22px; overflow: hidden; box-shadow: 0 40px 70px rgba(0,0,0,.5); border: 6px solid rgba(255,255,255,.1); z-index: 3; animation: floatY 8s ease-in-out infinite 1s;">
+        <img src="assets/arte/underarmour.png" alt="Arte Under Armour" style="width: 100%; display: block;">
+      </div>
+      <div style="position: absolute; top: 40px; right: 10px; padding: 10px 16px; border-radius: 100px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); backdrop-filter: blur(10px); color: #fff; font-size: 13px; font-weight: 700; z-index: 4; animation: floatY 6s ease-in-out infinite .5s;">✓ Pronto para publicar</div>
+    </div>
+  </header>
+
+  <section id="carta" data-screen-label="Carta do Editor" data-reveal="" style="opacity:0; transform: translateY(28px); transition: opacity .9s ease, transform .9s ease; max-width: 760px; margin: 0 auto; padding: 140px 32px 100px; text-align: left;">
+    <div style="font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #1E3A8A;">CARTA DA EDIÇÃO</div>
+    <h2 style="font-family: 'Newsreader', serif; font-weight: 500; font-size: clamp(26px, 3.2vw, 38px); color: #0B1533; margin: 16px 0 32px; line-height: 1.28;">Dia dos Pais: viva momentos inesquecíveis e presenteie quem sempre esteve ao seu lado</h2>
+    <p style="font-size: 19px; line-height: 1.8; color: #334155; margin: 0 0 22px;"><span style="font-family: 'Newsreader', serif; font-size: 64px; float: left; line-height: .8; padding: 8px 10px 0 0; color: #1E3A8A; font-weight: 500;">O</span> Dia dos Pais vai muito além da troca de presentes. É uma oportunidade para criar novas memórias, reunir a família e aproveitar experiências especiais ao lado de quem sempre esteve presente em momentos especiais.</p>
+    <p style="font-size: 19px; line-height: 1.8; color: #334155; margin: 0 0 22px;">Pensando nisso, nossa campanha deste ano convida aos assinantes e usuários a descobrirem que, dentro do clube de benefícios, é possível encontrar opções tanto para presentear quanto para viver experiências com o pai, sempre economizando.</p>
+    <p style="font-size: 19px; line-height: 1.8; color: #334155; margin: 0;">Entre as categorias disponíveis estão compras, varejo, lojas esportivas, eletrônicos, lazer e parceiros que oferecem descontos exclusivos.</p>
+
+    <h3 style="font-family: 'Newsreader', serif; font-weight: 500; font-size: 24px; color: #0B1533; margin: 44px 0 18px;">Como utilizar o material</h3>
+    <p style="font-size: 17px; line-height: 1.8; color: #334155; margin: 0 0 14px;">Disponibilizamos um template editável no Canva, desenvolvido para facilitar a divulgação da campanha da forma que você preferir.</p>
+    <p style="font-size: 17px; line-height: 1.8; color: #334155; margin: 0 0 10px;">Antes de publicar, recomendamos:</p>
+    <ul style="margin: 0 0 18px; padding-left: 20px; color: #334155; font-size: 17px; line-height: 1.8;">
+      <li>Inserir a logo do seu clube;</li>
+      <li>Ajustar, se desejar, as cores para seguir a identidade visual da marca;</li>
+      <li>Manter o link de acesso ao clube no final da copy em texto (legenda do post) para facilitar o cadastro e o resgate dos benefícios.</li>
+    </ul>
+    <p style="font-size: 17px; line-height: 1.8; color: #334155; margin: 0;">O objetivo é que cada clube consiga divulgar a campanha de forma personalizada, mantendo uma comunicação próxima dos colaboradores e demonstrando que o clube de benefícios também é uma forma de reconhecer pessoas, incentivando momentos de lazer, convivência e economia.</p>
+
+    <h3 style="font-family: 'Newsreader', serif; font-weight: 500; font-size: 24px; color: #0B1533; margin: 44px 0 18px;">Sugestões de divulgação</h3>
+    <p style="font-size: 17px; line-height: 1.8; color: #334155; margin: 0 0 10px;">Para gerar maior alcance, recomendamos utilizar diferentes canais de comunicação ao longo da campanha:</p>
+    <ul style="margin: 0 0 18px; padding-left: 20px; color: #334155; font-size: 17px; line-height: 1.8;">
+      <li>Grupos internos (WhatsApp);</li>
+      <li>Redes sociais ou email<br></li>
+    </ul>
+    <p style="font-size: 17px; line-height: 1.8; color: #334155; margin: 0;">Também sugerimos realizar mais de uma divulgação durante o período da campanha, reforçando diferentes possibilidades de uso dos benefícios, seja com depoimentos de colaboradores que são pais no Instagram da empresa.</p>
+
+    <h3 style="font-family: 'Newsreader', serif; font-weight: 500; font-size: 24px; color: #0B1533; margin: 44px 0 18px;">Ideias de comunicação</h3>
+    <p style="font-size: 17px; line-height: 1.8; color: #334155; margin: 0 0 18px;">Durante a campanha, destaque mensagens como:</p>
+    <div style="background: #F7F8FB; border: 1px solid #E2E8F0; border-radius: 16px; padding: 22px 26px; margin: 0 0 16px;">
+      <div style="font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #1E3A8A; margin-bottom: 8px;">Para quem quer presentear</div>
+      <p style="font-size: 16.5px; line-height: 1.75; color: #334155; margin: 0;">O presente ideal pode estar mais perto e com desconto! Neste Dia dos Pais, economize sem abrir mão de um presente especial. Encontre a opção perfeita para o seu pai e aproveite os benefícios que o Clube pode te proporcionar.</p>
+    </div>
+    <div style="background: #F7F8FB; border: 1px solid #E2E8F0; border-radius: 16px; padding: 22px 26px; margin: 0;">
+      <div style="font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #1E3A8A; margin-bottom: 8px;">Para quem quer viver experiências</div>
+      <p style="font-size: 16.5px; line-height: 1.75; color: #334155; margin: 0;">Os melhores presentes são os momentos vividos juntos. Convide seu pai para um almoço, cinema, viagem ou até mesmo um programa diferente da rotina e aproveite os descontos exclusivos do clube. Transforme este Dia dos Pais em uma experiência inesquecível.</p>
+    </div>
+
+    <h3 style="font-family: 'Newsreader', serif; font-weight: 500; font-size: 24px; color: #0B1533; margin: 44px 0 18px;">Sugestão de texto para o Giro de Notícias</h3>
+    <div style="background: linear-gradient(155deg, #142850, #0B1533); border-radius: 18px; padding: 30px 32px;">
+      <p style="font-family: 'Newsreader', serif; font-size: 19px; color: #F1DDA6; margin: 0 0 12px;">Dia dos Pais chegando!</p>
+      <p style="font-size: 16.5px; line-height: 1.75; color: rgba(255,255,255,.82); margin: 0 0 14px;">Já pensou em presentear seu pai ou viver uma experiência especial com ele gastando menos?</p>
+      <p style="font-size: 16.5px; line-height: 1.75; color: rgba(255,255,255,.82); margin: 0 0 14px;">No nosso Clube de Benefícios você encontra descontos exclusivos em restaurantes, bares, cinemas, lojas, viagens, lazer, esportes e muito mais para tornar essa data ainda mais especial.</p>
+      <p style="font-size: 16.5px; line-height: 1.75; color: rgba(255,255,255,.82); margin: 0 0 14px;">Acesse a plataforma, escolha seu benefício favorito e aproveite para celebrar quem sempre esteve ao seu lado.</p>
+      <p style="font-size: 16.5px; line-height: 1.75; color: #fff; font-weight: 600; margin: 0;">Seu pai merece um presente especial. Seu bolso também.</p>
+    </div>
+
+    <div style="margin-top: 36px; font-family: 'Newsreader', serif; font-style: italic; color: #64748B; font-size: 17px;">— Ana Tostes, Assessora de Comunicação</div>
+  </section>
+
+  <section id="encontrar" data-screen-label="O que voce encontrara" data-reveal="" style="opacity:0; transform: translateY(28px); transition: opacity .9s ease, transform .9s ease; max-width: 1180px; margin: 0 auto; padding: 60px 32px 100px;">
+    <div style="text-align: center; margin-bottom: 56px;">
+      <div style="font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #1E3A8A;">Nesta edição</div>
+      <h2 style="font-family: 'Newsreader', serif; font-weight: 500; font-size: clamp(28px, 3.4vw, 38px); color: #0B1533; margin: 14px 0 0;">O que você vai encontrar</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 22px;">
+      <sc-for list="{{ whatYouGet }}" as="item" hint-placeholder-count="7">
+        <div style="background: #fff; border: 1px solid #E2E8F0; border-radius: 20px; padding: 30px 26px; transition: transform .3s ease, box-shadow .3s ease;" style-hover="transform: translateY(-6px); box-shadow: 0 20px 40px rgba(15,23,42,.08);">
+          <div style="font-family: 'Newsreader', serif; font-size: 30px; color: #D4AF6A; font-weight: 500;">{{ item.num }}</div>
+          <div style="font-size: 18px; font-weight: 700; color: #0B1533; margin-top: 10px;">{{ item.title }}</div>
+          <div style="font-size: 15px; color: #64748B; margin-top: 8px; line-height: 1.55;">{{ item.desc }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="beneficios" data-screen-label="Beneficios" data-reveal="" style="opacity:0; transform: translateY(28px); transition: opacity .9s ease, transform .9s ease; background: #0F1B3D; padding: 100px 32px;">
+    <div style="max-width: 1180px; margin: 0 auto;">
+      <div style="text-align: center; margin-bottom: 56px;">
+        <div style="font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #93C5FD;">Para o seu clube</div>
+        <h2 style="font-family: 'Newsreader', serif; font-weight: 500; font-size: clamp(28px, 3.4vw, 38px); color: #fff; margin: 14px 0 0;">Benefícios reais, não apenas artes</h2>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,.1); border-radius: 22px; overflow: hidden;">
+        <sc-for list="{{ benefits }}" as="item" hint-placeholder-count="6">
+          <div style="background: #142850; padding: 34px 30px;">
+            <div style="width: 38px; height: 38px; border-radius: 50%; border: 1.5px solid #D4AF6A; display: flex; align-items: center; justify-content: center; font-family: 'Newsreader', serif; color: #F1DDA6; font-size: 15px;">{{ item.num }}</div>
+            <div style="font-size: 17px; font-weight: 700; color: #fff; margin-top: 18px;">{{ item.title }}</div>
+            <div style="font-size: 14.5px; color: rgba(255,255,255,.6); margin-top: 8px; line-height: 1.55;">{{ item.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="editorial" data-screen-label="Editorial" data-reveal="" style="opacity:0; transform: translateY(28px); transition: opacity .9s ease, transform .9s ease; max-width: 1180px; margin: 0 auto; padding: 110px 32px 100px;">
+    <div style="text-align: center; margin-bottom: 56px;">
+      <div style="font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #1E3A8A;">A revista começa aqui</div>
+      <h2 style="font-family: 'Newsreader', serif; font-weight: 500; font-size: clamp(28px, 3.6vw, 42px); color: #0B1533; margin: 14px 0 0;">Um presente para cada estilo de pai</h2>
+      <p style="color: #64748B; font-size: 16.5px; max-width: 560px; margin: 16px auto 0;">Sete perfis, catorze marcas — uma curadoria para inspirar a escolha certa.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px;">
+      <sc-for list="{{ categories }}" as="cat" hint-placeholder-count="7">
+        <div style="background: linear-gradient(180deg, #FFFFFF, #F7F8FB); border: 1px solid #E2E8F0; border-radius: 22px; padding: 30px; position: relative; overflow: hidden;">
+          <div style="width: 46px; height: 46px; border-radius: 50%; background: linear-gradient(135deg, #1E3A8A, #3B82F6); display: flex; align-items: center; justify-content: center; color: #fff; font-family: 'Newsreader', serif; font-size: 17px;">{{ cat.letter }}</div>
+          <div style="font-size: 19px; font-weight: 700; color: #0B1533; margin-top: 18px;">{{ cat.title }}</div>
+          <div style="font-size: 14.5px; color: #64748B; margin-top: 8px; line-height: 1.55;">{{ cat.desc }}</div>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px;">
+            <sc-for list="{{ cat.pills }}" as="pill" hint-placeholder-count="2">
+              <span style="font-size: 12.5px; font-weight: 600; color: #1E3A8A; background: #EAF0FE; padding: 6px 12px; border-radius: 100px;">{{ pill }}</span>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="destaques" data-screen-label="Destaques da edicao" data-reveal="" style="opacity:0; transform: translateY(28px); transition: opacity .9s ease, transform .9s ease; padding: 100px 0 110px; background: #0B1533;">
+    <div style="max-width: 1180px; margin: 0 auto 44px; padding: 0 32px; display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
+      <div>
+        <div style="font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #93C5FD;">Destaques da edição</div>
+        <h2 style="font-family: 'Newsreader', serif; font-weight: 500; font-size: clamp(28px, 3.6vw, 40px); color: #fff; margin: 14px 0 0;">Catorze marcas, uma campanha só</h2>
+      </div>
+      <div style="display: flex; gap: 10px;">
+        <button onclick="{{ scrollCarousel(-1) }}" style="width: 46px; height: 46px; border-radius: 50%; border: 1px solid rgba(255,255,255,.2); background: rgba(255,255,255,.06); color: #fff; font-size: 18px; cursor: pointer;">←</button>
+        <button onclick="{{ scrollCarousel(1) }}" style="width: 46px; height: 46px; border-radius: 50%; border: 1px solid rgba(255,255,255,.2); background: rgba(255,255,255,.06); color: #fff; font-size: 18px; cursor: pointer;">→</button>
+      </div>
+    </div>
+    <div class="gdn-scrollbar" ref="{{ setCarouselRef }}" style="display: flex; gap: 22px; overflow-x: auto; scroll-behavior: smooth; padding: 4px 32px 20px; scroll-snap-type: x mandatory;">
+      <sc-for list="{{ brands }}" as="brand" hint-placeholder-count="14">
+        <div style="flex: 0 0 260px; scroll-snap-align: start; background: #142850; border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,.08);">
+          <div style="height: 300px; overflow: hidden;">
+            <img src="{{ brand.art }}" alt="{{ brand.name }}" style="width: 100%; height: 100%; object-fit: cover; object-position: top;">
+          </div>
+          <div style="padding: 18px 18px 22px;">
+            <div style="font-size: 16px; font-weight: 700; color: #fff;">{{ brand.name }}</div>
+            <div style="font-size: 13.5px; color: #F1DDA6; margin-top: 4px;">{{ brand.promo }}</div>
+            <button onclick="{{ brand.openModal }}" style="margin-top: 14px; width: 100%; padding: 11px; border-radius: 100px; border: 1px solid rgba(255,255,255,.25); background: transparent; color: #fff; font-size: 13.5px; font-weight: 700; cursor: pointer;">Ver arte</button>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <sc-if value="{{ activeBrand }}" hint-placeholder-val="{{ false }}">
+    <div onclick="{{ closeModal }}" style="position: fixed; inset: 0; background: rgba(11,21,51,.82); backdrop-filter: blur(6px); z-index: 200; display: flex; align-items: center; justify-content: center; padding: 40px; animation: fadeIn .3s ease;">
+      <div onclick="{{ stopPropagation }}" style="background: #fff; border-radius: 24px; max-width: 880px; width: 100%; max-height: 88vh; overflow: auto; display: flex; flex-wrap: wrap;">
+        <div style="flex: 1 1 320px; background: #F1F5F9; display: flex; align-items: center; justify-content: center;">
+          <img src="{{ activeBrand.art }}" alt="{{ activeBrand.name }}" style="width: 100%; max-width: 380px; display: block;">
+        </div>
+        <div style="flex: 1 1 320px; padding: 40px; position: relative;">
+          <button onclick="{{ closeModal }}" style="position: absolute; top: 20px; right: 20px; width: 34px; height: 34px; border-radius: 50%; border: none; background: #F1F5F9; font-size: 16px; cursor: pointer; color: #475569;">✕</button>
+          <div style="font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #1E3A8A;">{{ activeBrand.segment }}</div>
+          <h3 style="font-family: 'Newsreader', serif; font-weight: 500; font-size: 30px; color: #0B1533; margin: 10px 0 0;">{{ activeBrand.name }}</h3>
+          <div style="font-size: 17px; font-weight: 700; color: #B8923F; margin-top: 6px;">{{ activeBrand.promo }}</div>
+          <p style="font-size: 15.5px; color: #475569; line-height: 1.7; margin-top: 18px;">{{ activeBrand.tagline }}</p>
+          <sc-if value="{{ activeBrand.coupon }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top: 18px; display: inline-flex; align-items: center; gap: 10px; background: #F7F8FB; border: 1px dashed #CBD5E1; padding: 10px 16px; border-radius: 12px;">
+              <span style="font-size: 12.5px; color: #64748B; font-weight: 600;">Cupom</span>
+              <span style="font-size: 14.5px; color: #0B1533; font-weight: 800; letter-spacing: .04em;">{{ activeBrand.coupon }}</span>
+            </div>
+          </sc-if>
+          <a href="{{ activeBrand.link }}" target="_blank" rel="noopener" style="margin-top: 26px; display: inline-block; background: linear-gradient(135deg, #1E3A8A, #3B82F6); color: #fff; text-decoration: none; font-weight: 700; font-size: 15px; padding: 14px 26px; border-radius: 100px;">Resgatar benefício</a>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <section id="como-usar" data-screen-label="Como utilizar" data-reveal="" style="opacity:0; transform: translateY(28px); transition: opacity .9s ease, transform .9s ease; max-width: 1180px; margin: 0 auto; padding: 110px 32px 100px;">
+    <div style="text-align: center; margin-bottom: 64px;">
+      <div style="font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #1E3A8A;">Passo a passo</div>
+      <h2 style="font-family: 'Newsreader', serif; font-weight: 500; font-size: clamp(28px, 3.4vw, 38px); color: #0B1533; margin: 14px 0 0;">Como utilizar esta campanha</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 8px; position: relative;">
+      <div style="position: absolute; top: 22px; left: 0; right: 0; height: 1px; background: #E2E8F0; z-index: 0;"></div>
+      <sc-for list="{{ steps }}" as="step" hint-placeholder-count="5">
+        <div style="position: relative; z-index: 1; text-align: center; padding: 0 12px;">
+          <div style="width: 46px; height: 46px; border-radius: 50%; background: #fff; border: 2px solid #1E3A8A; color: #1E3A8A; display: flex; align-items: center; justify-content: center; font-family: 'Newsreader', serif; font-size: 17px; margin: 0 auto;">{{ step.num }}</div>
+          <div style="font-size: 15.5px; font-weight: 700; color: #0B1533; margin-top: 16px;">{{ step.title }}</div>
+          <div style="font-size: 13.5px; color: #64748B; margin-top: 6px; line-height: 1.5;">{{ step.desc }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="cronograma" data-screen-label="Cronograma" data-reveal="" style="opacity:0; transform: translateY(28px); transition: opacity .9s ease, transform .9s ease; background: linear-gradient(160deg, #142850, #1E3A8A); padding: 100px 32px;">
+    <div style="max-width: 1180px; margin: 0 auto;">
+      <div style="text-align: center; margin-bottom: 48px;">
+        <div style="font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #93C5FD;">Semana da campanha</div>
+        <h2 style="font-family: 'Newsreader', serif; font-weight: 500; font-size: clamp(28px, 3.4vw, 38px); color: #fff; margin: 14px 0 0;">Cronograma sugerido</h2>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 14px;">
+        <sc-for list="{{ calendarDays }}" as="day" hint-placeholder-count="7">
+          <div style="background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); border-radius: 18px; padding: 22px 16px; text-align: center; backdrop-filter: blur(6px);">
+            <div style="font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #F1DDA6;">{{ day.name }}</div>
+            <div style="font-size: 15px; font-weight: 700; color: #fff; margin-top: 12px; line-height: 1.35;">{{ day.theme }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="downloads" data-screen-label="Downloads" data-reveal="" style="opacity:0; transform: translateY(28px); transition: opacity .9s ease, transform .9s ease; max-width: 1180px; margin: 0 auto; padding: 110px 32px 100px;">
+    <div style="text-align: center; margin-bottom: 56px;">
+      <div style="font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #1E3A8A;">Sua campanha, pronta</div>
+      <h2 style="font-family: 'Newsreader', serif; font-weight: 500; font-size: clamp(28px, 3.6vw, 40px); color: #0B1533; margin: 14px 0 0;">Baixe e comece a publicar hoje</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 26px;">
+      <div style="background: linear-gradient(155deg, #142850, #0B1533); border-radius: 26px; padding: 44px; position: relative; overflow: hidden;">
+        <div style="position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; border-radius: 50%; background: radial-gradient(circle, rgba(59,130,246,.35), transparent 70%);"></div>
+        <div style="font-size: 12.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #93C5FD; position: relative;">.ZIP · 14 artes</div>
+        <div style="font-family: 'Newsreader', serif; font-size: 28px; color: #fff; margin-top: 14px; position: relative;">Kit de Artes</div>
+        <div style="font-size: 15px; color: rgba(255,255,255,.65); margin-top: 12px; line-height: 1.6; position: relative;">Todas as peças da edição, em alta resolução, prontas para publicar no feed, stories e app do seu clube.</div>
+        <a href="downloads/Kit-de-Artes-Giro-de-Noticias-Dia-dos-Pais.zip" download="" style="margin-top: 28px; display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, #D4AF6A, #B8923F); color: #12213F; text-decoration: none; font-weight: 700; font-size: 15px; padding: 15px 28px; border-radius: 100px; position: relative;">Download ZIP <span>↓</span></a>
+      </div>
+      <div style="background: #fff; border: 1px solid #E2E8F0; border-radius: 26px; padding: 44px;">
+        <div style="font-size: 12.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #1E3A8A;">.DOCX · storytelling completo</div>
+        <div style="font-family: 'Newsreader', serif; font-size: 28px; color: #0B1533; margin-top: 14px;">Kit de Copys</div>
+        <div style="font-size: 15px; color: #64748B; margin-top: 12px; line-height: 1.6;">Textos editoriais prontos, marca a marca — é só copiar, colar e publicar.</div>
+        <a href="downloads/Kit-de-Copys-Giro-de-Noticias-Dia-dos-Pais.docx" download="" style="margin-top: 28px; display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, #1E3A8A, #3B82F6); color: #fff; text-decoration: none; font-weight: 700; font-size: 15px; padding: 15px 28px; border-radius: 100px;">Download DOCX <span>↓</span></a>
+      </div>
+      <div style="background: #fff; border: 1px solid #E2E8F0; border-radius: 26px; padding: 44px;">
+        <div style="font-size: 12.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #B8923F;">Canva · totalmente editável</div>
+        <div style="font-family: 'Newsreader', serif; font-size: 28px; color: #0B1533; margin-top: 14px;">Edite a arte no Canva</div>
+        <div style="font-size: 15px; color: #64748B; margin-top: 12px; line-height: 1.6;">Basta duplicar o arquivo e editar.</div>
+        <a href="https://canva.link/huh5aso8z05rib1" target="_blank" rel="noopener" style="margin-top: 28px; display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, #D4AF6A, #B8923F); color: #12213F; text-decoration: none; font-weight: 700; font-size: 15px; padding: 15px 28px; border-radius: 100px;">Abrir no Canva <span>↗</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="dicas" data-screen-label="Dicas de engajamento" data-reveal="" style="opacity:0; transform: translateY(28px); transition: opacity .9s ease, transform .9s ease; background: #F1F5F9; padding: 100px 32px;">
+    <div style="max-width: 1180px; margin: 0 auto;">
+      <div style="text-align: center; margin-bottom: 56px;">
+        <div style="font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #1E3A8A;">Para ir além</div>
+        <h2 style="font-family: 'Newsreader', serif; font-weight: 500; font-size: clamp(28px, 3.4vw, 38px); color: #0B1533; margin: 14px 0 0;">Dicas para aumentar o engajamento</h2>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
+        <sc-for list="{{ tips }}" as="tip" hint-placeholder-count="6">
+          <div style="background: #fff; border-radius: 18px; padding: 26px; border: 1px solid #E2E8F0;">
+            <div style="font-size: 16px; font-weight: 700; color: #0B1533;">{{ tip.title }}</div>
+            <div style="font-size: 14.5px; color: #64748B; margin-top: 8px; line-height: 1.55;">{{ tip.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" data-screen-label="FAQ" data-reveal="" style="opacity:0; transform: translateY(28px); transition: opacity .9s ease, transform .9s ease; max-width: 780px; margin: 0 auto; padding: 110px 32px 100px;">
+    <div style="text-align: center; margin-bottom: 48px;">
+      <div style="font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #1E3A8A;">Dúvidas</div>
+      <h2 style="font-family: 'Newsreader', serif; font-weight: 500; font-size: clamp(28px, 3.4vw, 38px); color: #0B1533; margin: 14px 0 0;">Perguntas frequentes</h2>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <sc-for list="{{ faqs }}" as="faq" hint-placeholder-count="5">
+        <div style="border: 1px solid #E2E8F0; border-radius: 16px; background: #fff; overflow: hidden;">
+          <div onclick="{{ faq.toggle }}" style="padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; cursor: pointer;">
+            <span style="font-size: 16px; font-weight: 700; color: #0B1533;">{{ faq.q }}</span>
+            <span style="font-size: 20px; color: #1E3A8A; transform: {{ faq.iconTransform }}; transition: transform .3s ease;">+</span>
+          </div>
+          <div style="max-height: {{ faq.maxHeight }}; overflow: hidden; transition: max-height .35s ease;">
+            <div style="padding: 0 24px 22px; font-size: 15px; color: #64748B; line-height: 1.65;">{{ faq.a }}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="proxima" data-screen-label="Proxima edicao" data-reveal="" style="opacity:0; transform: translateY(28px); transition: opacity .9s ease, transform .9s ease; padding: 40px 32px 130px;">
+    <div style="max-width: 1180px; margin: 0 auto; background: linear-gradient(150deg, #0B1533, #142850 60%, #1E3A8A); border-radius: 32px; padding: 80px 60px; text-align: center; position: relative; overflow: hidden;">
+      <div style="position: absolute; inset: 0; background: radial-gradient(700px 400px at 50% 0%, rgba(212,175,106,.16), transparent 70%);"></div>
+      <div style="position: relative;">
+        <div style="font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #F1DDA6;">Próxima edição</div>
+        <h2 style="font-family: 'Newsreader', serif; font-weight: 500; font-size: clamp(30px, 4vw, 46px); color: #fff; margin: 18px 0 0;">Especial de Setembro está a caminho.</h2>
+        <p style="color: rgba(255,255,255,.6); font-size: 16.5px; max-width: 480px; margin: 18px auto 0;">Uma nova narrativa, novas marcas e uma edição inteira pensada para fortalecer ainda mais o seu clube.</p>
+        <div style="display: inline-block; margin-top: 34px; padding: 12px 24px; border-radius: 100px; border: 1px solid rgba(255,255,255,.25); color: #fff; font-size: 14px; font-weight: 600;">Em breve, no seu Giro de Notícias</div>
+      </div>
+    </div>
+  </section>
+
+  <footer data-screen-label="Footer" style="background: #0B1533; padding: 64px 32px 36px;">
+    <div style="max-width: 1180px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; border-bottom: 1px solid rgba(255,255,255,.1); padding-bottom: 40px;">
+      <div>
+        <img src="assets/logo-negativo.png" alt="O Seu Clube" style="height: 28px;">
+        <p style="color: rgba(255,255,255,.5); font-size: 14px; max-width: 280px; margin-top: 16px; line-height: 1.6;">Uma plataforma White Label completa para o seu clube de benefícios.</p>
+      </div>
+      <div style="display: flex; gap: 60px; flex-wrap: wrap;">
+        <div>
+          <div style="color: #F1DDA6; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 14px;">Edição</div>
+          <a href="#destaques" style="display: block; color: rgba(255,255,255,.6); text-decoration: none; font-size: 14.5px; margin-bottom: 10px;">Destaques</a>
+          <a href="#cronograma" style="display: block; color: rgba(255,255,255,.6); text-decoration: none; font-size: 14.5px; margin-bottom: 10px;">Cronograma</a>
+          <a href="#downloads" style="display: block; color: rgba(255,255,255,.6); text-decoration: none; font-size: 14.5px;">Downloads</a>
+        </div>
+        <div>
+          <div style="color: #F1DDA6; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 14px;">Suporte</div>
+          <a href="mailto:suporte@oseuclube.com.br" style="display: block; color: rgba(255,255,255,.6); text-decoration: none; font-size: 14.5px; margin-bottom: 10px;">suporte@oseuclube.com.br</a>
+          <a href="#faq" style="display: block; color: rgba(255,255,255,.6); text-decoration: none; font-size: 14.5px;">Central de dúvidas</a>
+        </div>
+      </div>
+    </div>
+    <div style="max-width: 1180px; margin: 24px auto 0; color: rgba(255,255,255,.4); font-size: 13px;">© {{ year }} O Seu Clube White Label. Todos os direitos reservados.</div>
+  </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { scrolled: false, activeBrandIndex: null, openFaqIndex: 0 };
+
+  brandData = [
+    { key: 'stanley', name: 'Stanley', segment: 'Compras', promo: '15% de desconto', tagline: 'O presente perfeito para um pai que está sempre em movimento.', coupon: null, link: 'https://oseuclube.com.br/ver_beneficio.php?buscar=79d6c0cc-131e-4b02-b1b3-904732d0ebe2' },
+    { key: 'zattini', name: 'Zattini', segment: 'Compras', promo: '20% de desconto', tagline: 'Renove o estilo do seu pai com economia — roupas, calçados e acessórios das melhores marcas.', coupon: null, link: 'https://oseuclube.com.br/ver_beneficio.php?buscar=03ec80af-6d1e-4668-94d6-0190acf033cc' },
+    { key: 'netshoes', name: 'Netshoes', segment: 'Compras', promo: '20% de desconto', tagline: 'Seu pai merece conforto para cada passo — tênis, roupas e acessórios esportivos.', coupon: null, link: 'https://oseuclube.com.br/ver_beneficio.php?buscar=d1917290-45c4-4fda-8f76-309c913ec173' },
+    { key: 'casasbahia', name: 'Casas Bahia', segment: 'Compras', promo: '25% de desconto', tagline: 'Tecnologia e economia para surpreender no Dia dos Pais.', coupon: null, link: 'https://oseuclube.com.br/ver_beneficio.php?buscar=db95e294-1ed1-4ff1-9dcf-7d0fb996743e' },
+    { key: 'mash', name: 'Mash', segment: 'Compras', promo: 'Descontos progressivos até 25%', tagline: 'Conforto é um presente que faz diferença todos os dias.', coupon: null, link: 'https://oseuclube.com.br/ver_beneficio.php?buscar=bc817397-f7db-4fb4-98c4-7e35d52a7171' },
+    { key: 'mizuno', name: 'Mizuno', segment: 'Compras', promo: '15% de desconto', tagline: 'Para os pais que não param — conforto e performance em cada corrida.', coupon: null, link: 'https://oseuclube.com.br/ver_beneficio.php?buscar=074092b5-55df-423f-9df8-586a879a2280' },
+    { key: 'vivara', name: 'Vivara', segment: 'Compras', promo: '5% de desconto', tagline: 'Alguns presentes marcam momentos para sempre — relógios, joias e acessórios especiais.', coupon: null, link: 'https://oseuclube.com.br/ver_beneficio.php?buscar=ffef5365-48e4-4420-a87d-f4a75b01f8fa' },
+    { key: 'jbl', name: 'JBL', segment: 'Compras', promo: 'A partir de 10% de desconto', tagline: 'A trilha sonora do Dia dos Pais fica ainda melhor — caixas de som, fones e muito mais.', coupon: null, link: 'https://oseuclube.com.br/ver_beneficio.php?buscar=55711173465535aa36151f6a6b03c313&id_t=18611' },
+    { key: 'hipervarejo', name: 'Hipervarejo', segment: 'Compras', promo: '10% de desconto na 1ª compra', tagline: 'Seu pai ama carros? Então essa oferta é para ele.', coupon: null, link: 'https://oseuclube.com.br/ver_beneficio.php?buscar=a7c76e13de2ec9b2edd5e19bf44a93e4' },
+    { key: 'chillibeans', name: 'Chilli Beans', segment: 'Compras', promo: '10% de desconto na 1ª compra', tagline: 'Estilo de sobra para o melhor pai do mundo — óculos, relógios e acessórios.', coupon: null, link: 'https://oseuclube.com.br/ver_beneficio.php?buscar=da05dfd8e1edf85b0dc3d64990409e5e' },
+    { key: 'lacoste', name: 'Lacoste', segment: 'Compras', promo: '5% de desconto', tagline: 'Elegância nunca sai de moda.', coupon: null, link: 'https://oseuclube.com.br/ver_beneficio.php?buscar=bc29e5c47accd781b3e7fb6279587f04&id_t=18589' },
+    { key: 'myhero', name: 'My Hero', segment: 'Compras', promo: '20% de desconto', tagline: 'Para os pais apaixonados por música e cultura pop.', coupon: 'ROCK20', link: 'https://oseuclube.com.br/ver_beneficio.php?buscar=855b4f83943cb3b565253d4876df4850' },
+    { key: 'underarmour', name: 'Under Armour', segment: 'Compras', promo: '30% de desconto', tagline: 'O maior desconto da campanha está aqui — equipe seu pai com o melhor da performance.', coupon: null, link: 'https://oseuclube.com.br/ver_beneficio.php?buscar=2a12d56f-8a7e-4c32-80cd-c87cae2b7d8f' },
+    { key: 'winelovers', name: 'Wine Lovers', segment: 'Alimentação', promo: 'Até 40% de desconto', tagline: 'Brinde o Dia dos Pais com muito mais economia.', coupon: 'VINHO40', link: 'https://oseuclube.com.br/ver_beneficio.php?buscar=b8052cf68ba7af812e859ace6bde1f9f' },
+  ];
+
+  whatYouGetData = [
+    { title: 'Artes prontas', desc: 'Peças finalizadas em alta resolução, prontas para publicar.' },
+    { title: 'Stories', desc: 'Formatos verticais pensados para Instagram e WhatsApp Status.' },
+    { title: 'Copys', desc: 'Textos editoriais para cada marca, prontos para copiar e colar.' },
+    { title: 'Grandes marcas', desc: 'Parcerias com marcas reconhecidas nacionalmente.' },
+    { title: 'Campanha temática', desc: 'Narrativa e identidade visual exclusivas para o Dia dos Pais.' },
+    { title: 'Arquivos editáveis', desc: 'Camadas abertas para ajustar cores e textos com a sua marca.' },
+    { title: 'Calendário de publicação', desc: 'Um cronograma sugerido, dia a dia, para toda a semana.' },
+  ];
+
+  benefitsData = [
+    { title: 'Economize horas da equipe', desc: 'A campanha chega pronta: artes, textos e calendário definidos, sem retrabalho de criação.' },
+    { title: 'Mais engajamento', desc: 'Conteúdo editorial pensado para gerar conexão real com os usuários do clube.' },
+    { title: 'Mais utilização do clube', desc: 'Ofertas relevantes aproximam o usuário do app e incentivam o retorno mensal.' },
+    { title: 'Mais percepção de valor', desc: 'Seu clube ganha a imagem de um serviço completo, atualizado e bem cuidado.' },
+    { title: 'Comunicação profissional', desc: 'Identidade visual e tom de voz consistentes em todos os materiais.' },
+    { title: 'Campanhas prontas todo mês', desc: 'Uma nova edição do Giro de Notícias chega recorrentemente, sem esforço adicional.' },
+  ];
+
+  categoriesData = [
+    { letter: 'A', title: 'Pai aventureiro', desc: 'Para o pai que não sabe ficar parado.', pills: ['Hipervarejo', 'Stanley'] },
+    { letter: 'E', title: 'Pai esportista', desc: 'Performance e conforto para quem vive em movimento.', pills: ['Netshoes', 'Under Armour', 'Mizuno'] },
+    { letter: 'S', title: 'Pai elegante', desc: 'Estilo que atravessa gerações.', pills: ['Lacoste', 'Vivara', 'Chilli Beans'] },
+    { letter: 'C', title: 'Pai churrasqueiro', desc: 'O rei do fim de semana merece um upgrade na cozinha.', pills: ['Casas Bahia'] },
+    { letter: 'G', title: 'Pai gourmet', desc: 'Para brindar essa data com bom gosto.', pills: ['Wine Lovers'] },
+    { letter: 'T', title: 'Pai tecnológico', desc: 'Sempre conectado ao que há de mais novo.', pills: ['Casas Bahia', 'JBL'] },
+    { letter: 'X', title: 'Pai que merece experiências', desc: 'Presentes que ficam guardados na memória.', pills: ['Zattini', 'Mash', 'My Hero'] },
+  ];
+
+  stepsData = [
+    { title: 'Receba o material', desc: 'Todo o kit chega pronto para você.' },
+    { title: 'Personalize com sua marca', desc: 'Ajuste cores e textos, se quiser.' },
+    { title: 'Agende os disparos', desc: 'Use o cronograma sugerido.' },
+    { title: 'Compartilhe', desc: 'Publique nos canais do seu clube.' },
+    { title: 'Acompanhe os resultados', desc: 'Veja o engajamento crescer.' },
+  ];
+
+  calendarData = [
+    { name: 'Segunda', theme: 'Apresentação da campanha' },
+    { name: 'Terça', theme: 'Pai esportista' },
+    { name: 'Quarta', theme: 'Pai elegante' },
+    { name: 'Quinta', theme: 'Pai churrasqueiro' },
+    { name: 'Sexta', theme: 'Experiências' },
+    { name: 'Sábado', theme: 'Última chamada' },
+    { name: 'Domingo', theme: 'Feliz Dia dos Pais' },
+  ];
+
+  tipsData = [
+    { title: 'Envie por WhatsApp', desc: 'Compartilhe a novidade direto na conversa com seus usuários.' },
+    { title: 'Publique nos Stories', desc: 'Use os formatos verticais para aparecer no topo do feed.' },
+    { title: 'Envie por e-mail', desc: 'Inclua a campanha na sua newsletter da semana.' },
+  ];
+
+  faqData = [
+    { q: 'Como aplico minha marca na campanha?', a: 'Basta substituir o logo e ajustar as cores nos arquivos editáveis do Kit de Artes, mantendo a estrutura já pronta.' },
+    { q: 'Como edito as artes?', a: 'As peças são entregues via link do canva, basta duplicar a arte e editar com a sua marca.' },
+    { q: 'Onde encontro os links de cada oferta?', a: 'Cada uma das ofertas já estão no seu clube, basta procurar pelo nome do Parceiro.' },
+    { q: 'Posso alterar as cores dos materiais?', a: 'Sim. Os arquivos editáveis permitem adaptar a paleta à identidade do seu clube.' },
+    { q: 'Como obtenho suporte?', a: 'Envie um e-mail para antonio.brigido@grupodifusao.com  ou me chame no \nWhatsApp 32 8469-9969 a qualquer momento.' },
+  ];
+
+  carouselEl = null;
+
+  componentDidMount() {
+    const onScroll = () => this.setState({ scrolled: window.scrollY > 40 });
+    window.addEventListener('scroll', onScroll, { passive: true });
+    this._onScroll = onScroll;
+
+    const els = this.el ? this.el.querySelectorAll('[data-reveal]') : document.querySelectorAll('[data-reveal]');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    els.forEach((el) => io.observe(el));
+    this._io = io;
+  }
+
+  componentWillUnmount() {
+    if (this._onScroll) window.removeEventListener('scroll', this._onScroll);
+    if (this._io) this._io.disconnect();
+  }
+
+  openModal(i) { this.setState({ activeBrandIndex: i }); }
+  closeModal() { this.setState({ activeBrandIndex: null }); }
+  toggleFaq(i) { this.setState((s) => ({ openFaqIndex: s.openFaqIndex === i ? -1 : i })); }
+  setCarouselRef(el) { this.carouselEl = el; }
+  scrollCarousel(dir) { if (this.carouselEl) this.carouselEl.scrollBy({ left: dir * 320, behavior: 'smooth' }); }
+
+  renderVals() {
+    const scrolled = this.state.scrolled;
+    const brands = this.brandData.map((b, i) => ({
+      ...b,
+      art: `assets/arte/${b.key}.png`,
+      openModal: () => this.openModal(i),
+    }));
+    const whatYouGet = this.whatYouGetData.map((it, i) => ({ ...it, num: String(i + 1).padStart(2, '0') }));
+    const benefits = this.benefitsData.map((it, i) => ({ ...it, num: String(i + 1).padStart(2, '0') }));
+    const steps = this.stepsData.map((it, i) => ({ ...it, num: i + 1 }));
+    const faqs = this.faqData.map((it, i) => ({
+      ...it,
+      toggle: () => this.toggleFaq(i),
+      iconTransform: this.state.openFaqIndex === i ? 'rotate(45deg)' : 'rotate(0deg)',
+      maxHeight: this.state.openFaqIndex === i ? '200px' : '0px',
+    }));
+    const activeBrand = this.state.activeBrandIndex != null ? brands[this.state.activeBrandIndex] : null;
+
+    return {
+      navPadding: scrolled ? '14px 48px' : '26px 64px',
+      navBg: scrolled ? 'rgba(11,21,51,.92)' : 'transparent',
+      navBlur: scrolled ? 'blur(10px)' : 'none',
+      navShadow: scrolled ? '0 8px 30px rgba(0,0,0,.2)' : 'none',
+      navTextColor: '#fff',
+      logoOpacity: 1,
+      logoOpacityInverse: 0,
+      brands, whatYouGet, benefits,
+      categories: this.categoriesData,
+      steps,
+      calendarDays: this.calendarData,
+      tips: this.tipsData,
+      faqs,
+      activeBrand,
+      closeModal: () => this.closeModal(),
+      stopPropagation: (e) => e.stopPropagation(),
+      scrollCarousel: (dir) => () => this.scrollCarousel(dir),
+      setCarouselRef: (el) => this.setCarouselRef(el),
+      year: new Date().getFullYear(),
+    };
+  }
+}
+
+</script>
+</body>
+</html>
